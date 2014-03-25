@@ -78,4 +78,46 @@ public class ApUserFacadeTest {
         assertNull(result);
     }
 
+//    @Test
+//    public void testValidUserPassword() throws InvalidAuthException, UserNotFoundException {
+//        System.out.println("validUserPassword");
+//
+//        String email = "teste@teste.com";
+//        ApUser u = new ApUser("teste", email, "testeste");
+//
+//        facade.create(u);
+//        ApUser result = facade.validAuthentication(email, "testeste");
+//        assertNotNull(result);
+//        facade.remove(u);
+//    }
+
+//    @Test(expected = InvalidAuthException.class)
+//    public void testInvalidUserPassword() throws InvalidAuthException, UserNotFoundException {
+//        System.out.println("invalidUserPassword");
+//
+//        String email = "teste@teste.com";
+//        ApUser u = new ApUser("teste", email, "testeste");
+//
+//        facade.create(u);
+//        ApUser result = facade.validAuthentication(email, "teste2");
+//        assertNull(result);
+//        facade.remove(u);
+//    }
+
+//    @Test
+//    public void testValidEmail() {
+//        System.out.println("validEmail");
+//
+//        String email = "teste@teste.com";
+//        ApUser u = new ApUser("teste", email, "testeste");
+//
+//        facade.create(u);
+//        boolean result = facade.emailExists(email);
+//        assertEquals(false, result);
+//
+//        result = facade.emailExists("1231231232131232@gmail.com");
+//        assertEquals(true, result);
+//        facade.remove(u);
+//    }
+
 }
