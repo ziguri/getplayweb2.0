@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <link href="css/souma.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./registrationTemplate.xhtml">
+        
+            <ui:define name="title">
+                GetPlay - New User 
+            </ui:define>
+            
+             <ui:define name="box">
+                
+                <h:form>
+                    <h:outputLabel value="Name"/>
+                    <h:inputText value ="#{userManagedBean.newUserName}"/>
+                    <br /><br />
+                    <h:outputLabel value ="E-Mail"></h:outputLabel>
+                    <h:inputText value ="#{userManagedBean.newUserEmail}"/>
+                    <br /><br />
+                    <h:outputLabel value ="Password"></h:outputLabel>
+                    <h:inputText value ="#{userManagedBean.newUserPassword1}"/>
+                    <br /><br />
+                    <h:outputLabel value ="Confirm Password"></h:outputLabel>
+                    <h:inputText value ="#{userManagedBean.newUserPassword2}"/>
+                    <br /><br />
+                    <h:commandButton value="Back" action="login"/>
+                    <h:commandButton value="Submit"/>
+                    
+                </h:form>
+                
+            </ui:define> 
+            
+        </ui:composition>
+        
+    </h:body>
+</html>
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <link href="css/souma.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    
+    <h:body>
+        <ui:composition template="./registrationTemplate.xhtml">
+            
+            <ui:define name="title">
+                GetPlay - Registration 
+            </ui:define>
+            <ui:define name="box">
+                
+                <h:form>
+                    <br/>
+                    <h:outputLabel value ="E-Mail"></h:outputLabel>
+                    <h:inputText value ="#{userManagedBean.loginEmail}"/>
+                    <br /><br />
+                    <h:outputLabel value ="Password"></h:outputLabel>
+                    <h:inputText value ="#{userManagedBean.loginPassword}"/>
+                    <br /><br />
+                    <h:commandLink action="newUser"> New user?</h:commandLink> 
+                    <br /><br />
+                    <h:commandButton class="button" value="Submit" action="#{userManagedBean.loginUser()}"/>
+                </h:form>
+                
+            </ui:define> 
+            
+        </ui:composition>
+        
+        
+    </h:body>
+</html>
+

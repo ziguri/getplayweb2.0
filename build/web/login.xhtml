@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <link rel= "stylesheet" type = "text/css" href="resources/css/default.css"></link>
+        <link rel= "stylesheet" type = "text/css" href="resources/css/font-awesome.min.css"></link>
+    </h:head>
+
+    <h:body>
+        <h:form>
+
+            <table border="0" cellspacing="50">
+                <thead>
+                    <br />
+                    <br />
+                    <h2 align="center">GetPlayWeb</h2>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            
+                            <div>
+                                
+                                <img src="resources/clave.png" width="400" height="400" alt="clave"/>
+
+                            </div>
+                        </td>
+                        <td>
+                            <h:form binding="#{userController.login}" rendered="true">
+                                <table align="left" border="0" cellspacing="20">
+                                    <thead>
+
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                
+                                                <h:outputLabel class="loginLetters" value ="E-Mail"></h:outputLabel>
+                                            </td>
+                                            <td>
+                                                
+                                                <h:inputText class="full" value ="#{userController.loginEmail}"/>
+                                            </td>
+                                            <td>
+                                                <h:outputLabel style="color: red" value ="#{userController.userExists}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h:outputLabel class="loginLetters" value ="Password"></h:outputLabel>
+                                            </td>
+                                            <td>
+                                                <h:inputSecret class="full" value ="#{userController.loginPassword}"/>
+                                            </td>
+                                            <td>
+                                                <h:outputLabel style="color: red" value ="#{userController.passwordCorrect}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                <div align="center">
+                                                <h:commandButton class="buttonLogin" value="Submit" action="#{userController.makeLogin}"/>
+                                                </div>
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                <h:commandButton class="buttonLogin" action="#{userController.newRegistration}" value="New User"></h:commandButton>
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </h:form>
+
+                            <h:form binding="#{userController.newUser}" rendered="false">
+
+                                <table align="right" border="0" cellspacing="20">
+                                    <thead>
+
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h:outputLabel class="loginLetters" value="Name"/>
+                                            </td>
+                                            <td>
+                                                <h:inputText class="full" id="name" value ="#{userController.user.name}"/>
+                                            </td>
+                                            <td>
+                                                <h:message for="name" style="color: red"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:outputLabel class="loginLetters" value ="E-Mail"/></td>
+                                            <td><h:inputText class="full" id="eMail"  value="#{userController.user.eMail}"/></td>
+                                            <td><h:message for="eMail" style="color: red"/> 
+                                                <h:outputLabel value="#{userController.emailExists}" style="color: red"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:outputLabel class="loginLetters" value ="Password"/></td>
+                                            <td><h:inputSecret class="full" id="password" value ="#{userController.user.password}"/></td>
+                                            <td><h:message for="password" style="color: red"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:outputLabel class="loginLetters" value ="Confirm Password"/></td>
+                                            <td><h:inputSecret class="full" value ="#{userController.password2}"/></td>
+                                            <td><h:outputLabel value="#{userController.passwordMatch}" style="color: red"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:commandButton class="buttonLogin" immediate="true" value="Back" action="#{userController.cancelNewUser}"/></td>
+                                            <td><h:commandButton class="buttonLogin" value="Submit" action="#{userController.makeNewUser}"/></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </h:form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </h:form>
+    </h:body>
+</html>
+

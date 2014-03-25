@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="html-main" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+
+    </h:head>
+
+    <h:body>
+
+
+        <ui:insert name="top">
+            <div id="top" class="top">
+
+                <h:form>
+
+
+                    <table border="0" class="top-table">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="40%">
+                                    <div align="left">
+                                        <h:inputText value="#{musicPlaylistController.search}"/>&nbsp;
+                                        <h:commandButton image="resources/search.png" action="#{musicPlaylistController.makeSearch()}"/> 
+                                    </div>
+
+
+
+
+                                </td>
+
+                                <td width="20%">
+                                    <div align="center">
+                                        <h1>GetPlayWeb</h1>
+                                    </div>
+
+                                </td>
+
+                                <td width="40%">
+
+                                    <div align="right">
+                                        <h3><h:outputText value="#{userController.userName}" />
+                                            <h:commandButton class="nav-button" value="Profile" action="profile"/>
+                                            <h:commandButton class="nav-button" value="Logout" action="#{userController.makeLogout()}"/></h3>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </h:form>
+
+
+            </div>
+        </ui:insert>
+        <div id="left">
+            <ui:insert name="left">
+                <h:form>
+
+                    <table border="0" width="100%" cellspacing="10">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <h:commandButton title="My Music" image="resources/myMusic.png" action="myMusics"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:commandButton title="My Playlists" image="resources/myPlaylists.png" action="myPlaylists"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:commandButton title="All Music" image="resources/allMusic.png" action="allMusics"/>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+
+
+                </h:form>
+            </ui:insert>
+        </div>
+        <div id="content" class="left_content" style="color: black">
+
+            <table border="0" cellspacing="20">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="left">
+                            <h5><h:outputLabel value="#{musicPlaylistController.numberOfResults}"/></h5>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:form binding="#{musicPlaylistController.tableSearch}" rendered="false" id="s2" >
+
+
+
+
+                                <h:dataTable class="tables" id="table3" value="#{musicPlaylistController.searchResults}" var="music"
+                                             headerClass="person-table-header"
+                                             rowClasses="person-table-odd-row,person-table-even-row">
+
+
+                                    <h:column>
+
+                                        <f:facet name="header">
+                                            Title
+                                        </f:facet>
+                                        #{music.title}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Artist
+                                        </f:facet>
+                                        #{music.artist}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Album
+                                        </f:facet>
+                                        #{music.album}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Release Year
+                                        </f:facet>
+                                        #{music.releaseYEAR}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Copy to Playlist
+                                        </f:facet>
+
+                                        <h:commandButton class="buttonLogin" value="Copy" action="#{musicPlaylistController.showListSearch(music)}"/>
+                                    </h:column>
+
+
+                                </h:dataTable>
+
+                                <br/>
+                                <h:outputLabel value="#{musicPlaylistController.errorCopyingtoPlaylist}" style="color: red"/>
+                                <br/>
+                            </h:form>
+                        </td>
+                        <td>
+                            <h:form binding="#{musicPlaylistController.searchCopyPlay}" rendered="false" id="searchCopyPlay">
+
+                                <h3>Choose Playlist to copy</h3>
+
+                                <p>
+                                    <h:selectOneMenu value="#{musicPlaylistController.selectedItemSearch}" label="Playlists" id="selectItemSearch">
+
+                                        <f:selectItems value="#{musicPlaylistController.playlistList}" id="my2"/>
+                                    </h:selectOneMenu>
+                                    <h:inputHidden value="#{musicController.musicID}" id="my3"/>
+                                    <h:commandButton class="buttonLogin" value="Select" action="#{musicPlaylistController.copyToplaylistSearch}" id="my4"/></p>
+                                <p>
+                                    <h:commandButton class="buttonLogin" value="Cancel" action="#{musicPlaylistController.cancelCopyToPlaylistSearch}" id="my5"/></p>
+
+
+                            </h:form>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <ui:insert name="content" >
+
+            </ui:insert>
+
+            
+        </div>
+
+
+    </h:body>
+
+</html>

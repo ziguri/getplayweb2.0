@@ -1,0 +1,22 @@
+.person-table{   
+	border-collapse: collapse;
+}
+
+.person-table-header{
+	text-align:center;
+        background:none repeat scroll 0 0 #cccccc;
+	border-bottom:1px solid;
+	padding:16px;
+}
+
+.person-table-odd-row{
+	text-align:center;
+        background:none repeat scroll 0 0 #999999;
+	border-top:1px solid black;
+}
+
+.person-table-even-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #cccccc;
+	border-top:1px solid black;
+}

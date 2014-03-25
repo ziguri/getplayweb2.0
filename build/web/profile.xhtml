@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <ui:insert name="metadata"/>
+        <f:event type="preRenderView" listener="#{userController.verifyUser()}" />
+    </h:head>
+    <h:body>
+
+        <ui:composition template="./mainTemplate.xhtml">
+
+            <ui:define name ="content">
+
+                <h:form>
+                    <h1>Profile</h1> 
+                    <br />
+                    
+                    <table class="profile-table" border="0" cellspacing="10">
+                        <thead>
+                            
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h:outputLabel value="Name"/>
+                                </td>
+                                <td align="center">
+                                    <h:inputText id="name" value ="#{userController.user.name}"/>
+                                </td>
+                                <td>
+                                    <h:message for="name" style="color: red"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:outputLabel value ="E-mail"></h:outputLabel>
+                                </td>
+                                <td align="center">
+                                    <h:inputText id="eMail"  value="#{userController.user.eMail}"/>
+                                </td>
+                                <td>
+                                    <h:message for="eMail" style="color: red"/> 
+                                    <h:outputLabel value="#{userController.emailExists}" style="color: red"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:outputLabel value ="Password"></h:outputLabel>
+                                </td>
+                                <td align="center">
+                                    <h:inputSecret id="password" value ="#{userController.password1}"/>
+                                </td>
+                                <td>
+                                    <h:message for="password" style="color: red"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:outputLabel value ="Confirm Password"></h:outputLabel>
+                                </td>
+                                <td align="center">
+                                    <h:inputSecret value ="#{userController.password2}"/>
+                                </td>
+                                <td>
+                                    <h:outputLabel value="#{userController.passwordMatch}" style="color: red"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="left">
+                                    <h:commandButton class="left-button" value="Edit" action="#{userController.makeUpdateUser}"/> 
+                                    </div>
+                                </td>
+                                <td align="center">
+                                    <h:commandButton class="left-button" value="Delete Account" action="#{userController.makeDeleteUser}"/>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                 </h:form>
+
+            </ui:define>
+
+
+
+        </ui:composition>
+
+        
+    </h:body>
+</html>
+
