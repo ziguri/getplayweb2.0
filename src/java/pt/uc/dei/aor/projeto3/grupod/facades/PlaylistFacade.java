@@ -3,6 +3,7 @@ package pt.uc.dei.aor.projeto3.grupod.facades;
 
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -18,6 +19,9 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
     
     @PersistenceContext(unitName = "GetPlayWebPU")
     private EntityManager em;
+    
+    @Inject
+    private MusicFacade musicFacade;
     
     private String messageError;
     private List<Playlist> listMyPlaylists;
@@ -215,6 +219,8 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
     public String editPlaylist(Playlist p, Music m) throws MusicInPlaylistException {
         if (!p.getSongs().contains(m)) {
             p.getSongs().add(m);
+            m.setTimesSelected(m.getTimesSelected()+1);
+            musicFacade.edit(m);
             edit(p);
             return "myPlaylists";
         } else {

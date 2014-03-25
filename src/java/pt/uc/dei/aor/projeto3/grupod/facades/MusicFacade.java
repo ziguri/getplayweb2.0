@@ -1,7 +1,6 @@
 package pt.uc.dei.aor.projeto3.grupod.facades;
 
 import java.io.File;
-import java.nio.file.Files;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

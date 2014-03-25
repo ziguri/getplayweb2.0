@@ -6,21 +6,15 @@
 package pt.uc.dei.aor.projeto3.grupod.entities;
 
 import java.io.Serializable;
-import static java.util.Calendar.YEAR;
-import java.util.GregorianCalendar;
-import javax.inject.Inject;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import pt.uc.dei.aor.projeto3.grupod.ejb.MusicEJB;
 
 /**
  *
@@ -38,7 +32,8 @@ import pt.uc.dei.aor.projeto3.grupod.ejb.MusicEJB;
     @NamedQuery(name = "Music.findByPath", query = "SELECT m FROM Music m WHERE m.releaseYEAR = :releaseYEAR"),
     @NamedQuery(name = "Music.findByUserID", query = "SELECT m FROM Music m WHERE m.userplay.userID = :userID"),
     @NamedQuery(name = "Music.musicsALLList", query = "SELECT m.title,m.artist,m.album,m.releaseYEAR FROM Music m"),
-    @NamedQuery(name = "Music.musicsALLListOfUser", query = "SELECT m FROM Music m WHERE m.userplay.userID = :userID")
+    @NamedQuery(name = "Music.musicsALLListOfUser", query = "SELECT m FROM Music m WHERE m.userplay.userID = :userID"),
+    @NamedQuery(name = "Music.musicOrderByTimesSelected", query = "SELECT m FROM Music m ORDER BY timesSelected Desc")
     })
 public class Music implements Serializable {
     
@@ -76,9 +71,10 @@ public class Music implements Serializable {
     @NotNull(message = "Year not valid")
     @Column(name = "RELEASE_YEAR", nullable = false)
     private int releaseYEAR;
+    
+    @Column(name = "TIMES_SELECTED")
+    private int timesSelected;
 
-    //@Basic(optional = false)
-    //@NotNull
     @Size(min = 1, message = "Path not valid")
     @Column(name = "MUSIC_PATH", nullable = false)
     private String path;
@@ -145,6 +141,16 @@ public class Music implements Serializable {
     public void setUser(UserPlay user) {
         this.userplay = user;
     }
+
+    public int getTimesSelected() {
+        return timesSelected;
+    }
+
+    public void setTimesSelected(int timesSelected) {
+        this.timesSelected = timesSelected;
+    }
+    
+    
 
     @Override
     public int hashCode() {
